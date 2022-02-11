@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.test.mapper.CardMapper">
+<resultMap type="com.test.domain.RcvAppl" id="rcvApplResultMap">
+    <id property="SSN" column="SSN"/>
+    <result property="rcvD" column="RCV_D"/>
+    <result property="rcvSeqNo" column="RCV_SEQ_NO"/>
+    <result property="applD" column="APPL_D"/>
+    <result property="birthD" column="BIRTH_D"/>
+    <result property="hgNm" column="HG_NM"/>
+    <result property="engNm" column="ENG_NM"/>
+    <result property="stlMtd" column="STL_MTD"/>
+    <result property="stlAct" column="STL_ACT"/>
+    <result property="bnkCd" column="BNK_CD"/>
+    <result property="stlDd" column="STL_DD"/>
+    <result property="mgtBbrn" column="MGT_BBRN"/>
+    <result property="applClas" column="APPL_CLAS"/>
+    <result property="stmtSndMtd" column="STMT_SND_MTD"/>
+    <result property="billadrAdr1" column="BILLADR_ADR1"/>
+    <result property="billadrAdr2" column="BILLADR_ADR2"/>
+    <result property="billadrZip" column="BILLADR_ZIP"/>
+    <result property="hdpNo" column="HDP_NO"/>
+    <result property="BRD" column="BRD"/>
+    <result property="scrtNo" column="SCRT_NO"/>
+    <result property="emailAdr" column="EMAIL_ADR"/>
+    <result property="crdNo" column="CRD_NO"/>
+    <result property="impsbClas" column="IMPSB_CLAS"/>
+    <result property="impsbCd" column="IMPSB_CD"/>
+    <result property="lstOprTm" column="LST_OPR_TM"/>
+    <result property="lstOprD" column="LST_OPR_D"/>
+    <result property="lstOprtEmpno" column="LST_OPRT_EMPNO"/>
+</resultMap>
+<resultMap type="com.test.domain.Cust" id="custResultMap">
+    <id property="custNo" column="CUST_NO"/>
+    <result property="SSN" column="SSN"/>
+    <result property="regD" column="REG_D"/>
+    <result property="hgNm" column="HG_NM"/>
+    <result property="birthD" column="BIRTH_D"/>
+    <result property="hdpNo" column="HDP_NO"/>
+    <result property="lstOprTm" column="LST_OPR_TM"/>
+    <result property="lstOprD" column="LST_OPR_D"/>
+    <result property="lstOprEmpno" column="LST_OPR_EMPNO"/>    
+</resultMap>
+<resultMap type="com.test.domain.Crd" id="crdResultMap">
+    <id property="crdNo" column="CRD_NO"/>
+    <result property="custNo" column="CUST_NO"/>
+    <result property="mgtBbrn" column="MGT_BBRN"/>
+    <result property="regD" column="REG_D"/>
+    <result property="SSN" column="SSN"/>
+    <result property="vldDur" column="VLD_DUR"/>
+    <result property="BRD" column="BRD"/>
+    <result property="scrtNo" column="SCRT_NO"/>
+    <result property="engNm" column="ENG_NM"/>
+    <result property="bfCrdNo" column="BF_CRD_NO"/>
+    <result property="lstCrdF" column="LST_CRD_F"/>
+    <result property="fstRegD" column="FST_REG_D"/>
+    <result property="crdGrd" column="CRD_GRD"/>
+    <result property="lstOprTm" column="LST_OPR_TM"/>
+    <result property="lstOprD" column="LST_OPR_D"/>
+    <result property="lstOprtEmpno" column="LST_OPRT_EMPNO"/>
+</resultMap>
+<resultMap type="com.test.domain.Bill" id="billResultMap">
+    <id property="custNo" column="CUST_NO"/>
+    <result property="stlAct" column="STL_ACT"/>
+    <result property="bnkCd" column="BNK_CD"/>
+    <result property="dpsNm" column="DPS_NM"/>
+    <result property="stlMtd" column="STL_MTD"/>
+    <result property="stlDd" column="STL_DD"/>
+    <result property="prcsClas" column="PRCS_CLAS"/>
+    <result property="stmtSndMtd" column="STMT_SND_MTD"/>
+    <result property="stmtDeniClas" column="STMT_DENI_CLAS"/>
+    <result property="billZip" column="BILL_ZIP"/>
+    <result property="billAdr1" column="BILL_ADR1"/>
+    <result property="billAdr2" column="BILL_ADR2"/>
+    <result property="emailAdr" column="EMAIL_ADR"/>
+    <result property="lstOprTm" column="LST_OPR_TM"/>
+    <result property="lstOprD" column="LST_OPR_D"/>
+    <result property="lstOprtEmpno" column="LST_OPRT_EMPNO"/>
+</resultMap>
+   <insert id="rcvApplInsert" parameterType="com.test.domain.RcvAppl">
+      insert into RCVAPPL
+        (
+            SSN
+          , RCV_D
+          , RCV_SEQ_NO
+          , APPL_D
+          , APPL_CLAS
+          , BRD
+          , HG_NM
+          , ENG_NM
+          , BIRTH_D
+          , STL_DD
+          , STL_MTD
+          , BNK_CD
+          , STL_ACT
+          , STMT_SND_MTD
+          , BILLADR_ZIP
+          , BILLADR_ADR1
+          , BILLADR_ADR2
+          , EMAIL_ADR
+          , HDP_NO
+          , SCRT_NO
+          , IMPSB_CLAS
+          , IMPSB_CD
+        ) values (
+            #{ SSN }
+          , #{ rcvD }
+          , #{ rcvSeqNo }
+          , #{ applD }
+          , #{ applClas }
+          , #{ BRD }
+          , #{ hgNm }
+          , #{ engNm }
+          , #{ birthD }
+          , #{ stlDd }
+          , #{ stlMtd }
+          , #{ bnkCd }
+          , #{ stlAct }
+          , #{ stmtSndMtd }
+          , #{ billadrZip }
+          , #{ billadrAdr1 }
+          , #{ billadrAdr2 }
+          , #{ emailAdr }
+          , #{ hdpNo }
+          , #{ scrtNo }
+          , #{ impsbClas }
+          , #{ impsbCd }
+        )
+   </insert>
+   <insert id="custInsert" parameterType="com.test.domain.Cust">
+      <selectKey resultType="string" keyProperty="custNo" order="AFTER">
+			select CUST_NO.CURRVAL from DUAL
+		</selectKey>
+      insert into CUST 
+        (
+            CUST_NO
+          , SSN
+          , REG_D
+          , HG_NM
+          , BIRTH_D
+          , HDP_NO
+          , LST_OPR_TM
+          , LST_OPR_D
+          , LST_OPRT_EMPNO  
+        ) values (
+            CUST_NO.NEXTVAL
+          , #{ SSN }
+          , #{ regD }
+          , #{ hgNm }
+          , #{ birthD }
+          , #{ hdpNo }
+          , #{ lstOprTm }
+          , #{ lstOprD }
+          , #{ lstOprtEmpno}  
+        )
+   </insert>
+   <insert id="crdInsert" parameterType="com.test.domain.Crd">
+      insert into CRD
+        (
+           CRD_NO
+         , CUST_NO
+         , MGT_BBRN
+         , REG_D
+         , SSN
+         , VLD_DUR
+         , BRD
+         , SCRT_NO
+         , ENG_NM
+         , BF_CRD_NO
+         , LST_CRD_F
+         , FST_REG_D
+         , CRD_GRD
+         , LST_OPR_TM
+         , LST_OPR_D
+         , LST_OPRT_EMPNO  
+        ) values (
+           #{ crdNo } || '11' || CRD_NO.NEXTVAL || '1'
+         , #{ custNo }
+         , #{ mgtBbrn }
+         , #{ regD }
+         , #{ SSN }
+         , #{ vldDur }
+         , #{ BRD }
+         , #{ scrtNo }
+         , #{ engNm }
+         , #{ bfCrdNo }
+         , '1'
+         , #{ fstRegD }
+         , #{ crdGrd }
+         , #{ lstOprTm }
+         , #{ lstOprD }
+         , #{ lstOprtEmpno }  
+        )
+   </insert>
+   <insert id="billInsert" parameterType="com.test.domain.Bill">
+      insert into BILL
+        (
+           CUST_NO
+         , STL_ACT
+         , BNK_CD
+         , DPS_NM
+         , STL_MTD
+         , STL_DD
+         , PRCS_CLAS
+         , STMT_SND_MTD
+         , STMT_DENI_CLAS
+         , BILL_ZIP
+         , BILL_ADR1
+         , BILL_ADR2
+         , EMAIL_ADR
+         , LST_OPR_TM
+         , LST_OPR_D
+         , LST_OPRT_EMPNO  
+        ) values (	
+           #{ custNo }
+         , #{ stlAct }
+         , #{ bnkCd }
+         , #{ dpsNm }
+         , #{ stlMtd }
+         , #{ stlDd }
+         , #{ prcsClas }
+         , #{ stmtSndMtd }
+         , #{ stmtDeniClas }
+         , #{ billZip }
+         , #{ billAdr1 }
+         , #{ billAdr2 }
+         , #{ emailAdr }
+         , #{ lstOprTm }
+         , #{ lstOprD }
+         , #{ lstOprtEmpno }
+        )
+   </insert>
+   <select id="findCustNo" parameterType="com.test.domain.RcvAppl" resultType="string">
+       select CUST_NO
+         from CUST
+        where SSN = #{ SSN }
+   </select>
+   <select id="beforeCrdNo" resultType="string">
+       select CRD_NO
+         from CRD
+        where SSN = #{ SSN }
+          and BRD = #{ BRD }
+          and LST_CRD_F = '1'
+   </select>
+   <update id="beforeCrdStatus">
+       update CRD
+          set LST_CRD_F = ''
+        where CRD_NO = #{ bfCrdNo }
+   </update>
+   <select id="impsb1" parameterType="com.test.domain.RcvAppl" resultType="int">
+        select COUNT(*)
+        from RCVAPPL
+        where RCV_D = to_char(sysdate,'yy/mm/dd') 
+        and SSN = #{ SSN }
+   </select>
+</mapper>
